@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, render_template, make_response
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 from flask_cors import CORS
 from blog_view import blog
+from blog_control.user_mgmt import User
 import os
 
 # Test https in http environment
@@ -9,7 +10,7 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__, static_url_path='/static')
 CORS(app)
-app.secure_key = 'tei_server'
+app.secret_key = 'tei_server2021'
 
 app.register_blueprint(blog.blog_abtest, url_prefix='/blog')
 login_manager = LoginManager()

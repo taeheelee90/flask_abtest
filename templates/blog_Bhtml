@@ -53,25 +53,24 @@
       <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-10 px-0">
           <h2 class="display-4 mb-4">
-            <b>Python and Flask</b>
+            <b>Python and DJango</b>
           </h2>
           <p class="lead my-3">
 
           </p>
-         <p class="lead mb-2">
-            {% if user_email != null %} 
-            New post will be sent to  {{ user_email }}.&nbsp;
-            <a class="btn btn-light" href="/blog/logout" role="button">Cancel Subscription</a>
+          <p class="lead mb-2">
+            Subscribing at {% if user_email != null %}
+            {{ user_email }}.
             {% else %}
-            If you submit email, we will send new post to your email. &nbsp;
-            <form action="/blog/set_email" method="post">
+            If you submit email address, you can subscribe new postings. &nbsp;
+            <form action="/blog/set_email" method="get">
               <div class="form-row">
                 <div class="col">
                   <input type="email" class="form-control" name="user_email">
-                  <input type="hidden" name="blog_id" value="A">
+                  <input type="hidden" name="blog_id" value="B">
                 </div>
                 <div class="col">
-                  <button type="submit" class="btn btn-primary">Subscribe</button>
+                  <button type="submit" class="btn btn-primary">subscribe</button>
                 </div>
               </div>
             </form>
@@ -80,7 +79,6 @@
         </div>
       </div>
     </div>
-
 
     <main role="main" class="container">
       <div class="row">
@@ -105,13 +103,15 @@
               (source: wikipedia)
             </p>
             <br>
-            <h3>Flask</h3>
+            <h3>Django?</h3>
             <p>
-              Flask is a micro web framework written in Python. 
-              It is classified as a microframework because it does not require particular tools or libraries.
-              It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. 
-              However, Flask supports extensions that can add application features as if they were implemented in Flask itself. 
-              Extensions exist for object-relational mappers, form validation, upload handling, various open authentication technologies and several common framework related tools.
+              Django is a Python-based free and open-source web framework that follows the model-template-views (MTV) architectural pattern.
+              It is maintained by the Django Software Foundation (DSF), an American independent organization established as a 501(c)(3) non-profit.
+              Django's primary goal is to ease the creation of complex, database-driven websites. 
+              The framework emphasizes reusability and "pluggability" of components, less code, low coupling, rapid development, and the principle of don't repeat yourself.
+              Python is used throughout, even for settings, files, and data models. 
+              Django also provides an optional administrative create, read, update and delete interface that is generated dynamically through introspection and configured via admin models.
+              Some well known sites that use Django include PBS, Instagram, Mozilla, The Washington Times, Disqus, Bitbucket, and Nextdoor.
               (source: wikipedia)
             </p>
             <br>
