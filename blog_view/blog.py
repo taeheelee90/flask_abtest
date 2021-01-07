@@ -14,7 +14,7 @@ def set_email():
     else:
         print('set_email', request.form['user_email'])
         user = User.create(request.form['user_email'], 'A')
-        login_user(user, remember=true, duration=datetime.timedelta(days=365))
+        login_user(user, remember='true', duration=datetime.timedelta(days=365))
 
         return redirect(url_for('blog.test_blog'))
 
@@ -24,3 +24,8 @@ def test_blog():
         return render_template('blog_A.html', user_email=current_user.user_email)
     else:
         return render_template('blog_A.html')
+
+@blog_abtest.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('blog.test_blog'))
