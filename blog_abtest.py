@@ -33,4 +33,4 @@ def app_before_request():
         session['client_id'] = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='8080', debug=True)
+    app.run(host='0.0.0.0', port='8080')

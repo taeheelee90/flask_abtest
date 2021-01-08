@@ -12,7 +12,7 @@ def page():
     if current_user.is_authenticated:
         webpage_name = BlogSession.get_blog_page(current_user.blog_id)
         BlogSession.save_session_info(
-            session['client_id'], current_user.user_email, webpage_name)
+            session['client_id'], 'current_user.user_email', webpage_name)
         return render_template(webpage_name, user_email=current_user.user_email)
     else:
         webpage_name = BlogSession.get_blog_page()
@@ -27,11 +27,10 @@ def set_email():
         print('set_email', request.args.get('user_email'))
         return redirect(url_for('blog.test_blog'))
     else:
-        print('set_email', request.form['user_email'])
-        user = User.create(request.form['user_email'], 'A')
+        user = User.create(request.form['user_email'], request.form['blog_id'])
         login_user(user, remember='true', duration=datetime.timedelta(days=365))
 
-        return redirect(url_for('blog.test_blog'))
+        return redirect(url_for('blog.page'))
 
 
 
@@ -39,4 +38,4 @@ def set_email():
 def logout():
     User.delete(current_user.id)
     logout_user()
-    return redirect(url_for('blog.test_blog'))
+    return redirect(url_for('blog.page'))
