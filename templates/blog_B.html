@@ -58,19 +58,20 @@
           <p class="lead my-3">
 
           </p>
-          <p class="lead mb-2">
-            Subscribing at {% if user_email != null %}
-            {{ user_email }}.
+         <p class="lead mb-2">
+            {% if user_email != null %} 
+            New post will be sent to  {{ user_email }}.&nbsp;
+            <a class="btn btn-light" href="/blog/logout" role="button">Cancel Subscription</a>
             {% else %}
-            If you submit email address, you can subscribe new postings. &nbsp;
-            <form action="/blog/set_email" method="get">
+            If you submit email, we will send new post to your email. &nbsp;
+            <form action="/blog/set_email" method="post">
               <div class="form-row">
                 <div class="col">
                   <input type="email" class="form-control" name="user_email">
                   <input type="hidden" name="blog_id" value="B">
                 </div>
                 <div class="col">
-                  <button type="submit" class="btn btn-primary">subscribe</button>
+                  <button type="submit" class="btn btn-primary">Subscribe</button>
                 </div>
               </div>
             </form>
@@ -79,6 +80,7 @@
         </div>
       </div>
     </div>
+
 
     <main role="main" class="container">
       <div class="row">
@@ -103,7 +105,7 @@
               (source: wikipedia)
             </p>
             <br>
-            <h3>Django?</h3>
+            <h3>Django</h3>
             <p>
               Django is a Python-based free and open-source web framework that follows the model-template-views (MTV) architectural pattern.
               It is maintained by the Django Software Foundation (DSF), an American independent organization established as a 501(c)(3) non-profit.

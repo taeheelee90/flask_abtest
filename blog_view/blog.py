@@ -1,10 +1,20 @@
 from flask import Flask, Blueprint, request, render_template, make_response, jsonify, redirect, url_for
 from flask_login import login_user, current_user, logout_user
 from blog_control.user_mgmt import User
+from blog_control.session_mgmt import BlogSession
 import datetime
 
 
 blog_abtest = Blueprint('blog', __name__)
+
+@blog_abtest.route('/page')
+def page():
+    
+    if current_user.is_authenticated:
+        return render_template('blog_A.html', user_email=current_user.user_email)
+    else:
+        return render_template(BlogSession.get_blog_page())
+
 
 @blog_abtest.route('/set_email', methods=['GET', 'POST'])
 def set_email():
@@ -18,12 +28,7 @@ def set_email():
 
         return redirect(url_for('blog.test_blog'))
 
-@blog_abtest.route('/test_blog')
-def test_blog():
-    if current_user.is_authenticated:
-        return render_template('blog_A.html', user_email=current_user.user_email)
-    else:
-        return render_template('blog_A.html')
+
 
 @blog_abtest.route('/logout')
 def logout():
