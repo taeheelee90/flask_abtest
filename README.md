@@ -1,8 +1,6 @@
 # flask_abtest
 Simple ABTest with Flask
 
-http://f530942cbb50.ngrok.io/blog/page
-
 Simple blog which shows either page 'a' or 'b' when it is loaded. 
 User can submit or cancel subscription via email. 
 
